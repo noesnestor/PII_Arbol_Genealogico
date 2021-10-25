@@ -8,13 +8,14 @@ namespace Library
         public override void Visit (Node node)
         {
             this.ContentBuilder.Clear();
-            int sumaEdad = 0;
+            int sumaEdad = node.Person.Edad;
+            Console.WriteLine($"El Padre de la familia {node.Person.Nombre}, tiene {node.Person.Edad} años.");
             foreach (Persona persona in node.People)
             {
                 sumaEdad += persona.Edad;
-                Console.WriteLine($"He sumado la edad de {persona.Nombre}");
+                Console.WriteLine($"He sumado la edad de {persona.Nombre}, este tiene {persona.Edad} años.");
             }
-            this.ContentBuilder.Append($"La suma de las edades de los hijos es: {sumaEdad}");
+            this.ContentBuilder.Append($"La suma de las edades de la familia es: {sumaEdad} años.");
         }  
     }
 }
