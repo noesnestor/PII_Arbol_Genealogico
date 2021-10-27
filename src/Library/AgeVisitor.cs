@@ -5,17 +5,20 @@ namespace Library
 {
     public class AgeVisitor : Visitor
     {
+        public int SumaTotal {get; private set;}
         public override void Visit (Node node)
         {
             this.ContentBuilder.Clear();
-            int sumaEdad = node.Person.Edad;
-            Console.WriteLine($"El Padre de la familia {node.Person.Nombre}, tiene {node.Person.Edad} años.");
-            foreach (Persona persona in node.People)
+            int EdadASumar = node.Person.Edad;
+            this.SumaTotal += EdadASumar;
+            foreach (Node nodo in node.Children)
             {
-                sumaEdad += persona.Edad;
-                Console.WriteLine($"He sumado la edad de {persona.Nombre}, este tiene {persona.Edad} años.");
+                nodo.Accept(this);
             }
-            this.ContentBuilder.Append($"La suma de las edades de la familia es: {sumaEdad} años.");
+            if(!this.ContentBuilder.ToString().Contains("La suma de las edades de la familia es:"))
+            {
+            this.ContentBuilder.Append($"La suma de las edades de la familia es: {SumaTotal} años.");
+            }
         }  
     }
 }

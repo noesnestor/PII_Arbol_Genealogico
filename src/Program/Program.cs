@@ -52,10 +52,21 @@ namespace Program
             n2.AddChildren(n0);
 
             // visitar el árbol aquí
-            visitanteEdad.Visit(n2);
+
+            //Se suman las edades de: Mario(90), Fernando(50), Jacqueline(60), 
+            // María Lucía(12) y Néstor(19). Esto equivale a:  90+60+50+12+19 = 231 
+            visitanteEdad.Visit(n9);
             Console.WriteLine(visitanteEdad.Content);
-            visitanteHijoMayor.Visit(n3);
+
+            //Checkeando entre Néstor y María Lucía quién es el hijo más grande.
+            visitanteHijoMayor.Visit(n2);
             Console.WriteLine(visitanteHijoMayor.Content);
+
+            /*Checkear la familia desde el inicio del arbol me otorga un resultado.*/
+            visitanteNombreLargo.Visit(n9);
+            Console.WriteLine(visitanteNombreLargo.Content);
+
+            /*Que es distinto si checkeo otra zona más cercana al final.*/
             visitanteNombreLargo.Visit(n3);
             Console.WriteLine(visitanteNombreLargo.Content);
         }
